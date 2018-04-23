@@ -1,0 +1,37 @@
+﻿<UserControl 
+    x:Class="CompositeCommandBehaviorExample.View.MainView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core" 
+    xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+    xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm" 
+    xmlns:vm="clr-namespace:CompositeCommandBehaviorExample.ViewModel" 
+    mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300"
+    DataContext="{dxmvvm:ViewModelSource Type=vm:MainViewModel}">
+    <dxmvvm:Interaction.Behaviors>
+        <dx:DXMessageBoxService />
+    </dxmvvm:Interaction.Behaviors>
+    <Grid>
+        <dxb:BarManager>
+            <dxb:BarManager.Bars>
+                <dxb:Bar Caption="Main Menu" IsMainMenu="True">
+                    <dxb:BarButtonItem Content="Save" Command="{Binding SaveCommand}"/>
+                    <dxb:BarButtonItem Content="Close" Command="{Binding CloseCommand}"/>
+                    <dxb:BarButtonItem Content="Save and Close">
+                        <dxmvvm:Interaction.Behaviors>
+                            <dxmvvm:CompositeCommandBehavior>
+                                <dxmvvm:CommandItem Command="{Binding SaveCommand}"/>
+                                <dxmvvm:CommandItem Command="{Binding CloseCommand}"/>
+                            </dxmvvm:CompositeCommandBehavior>
+                        </dxmvvm:Interaction.Behaviors> 
+                    </dxb:BarButtonItem>
+                </dxb:Bar>
+            </dxb:BarManager.Bars>
+            <Grid>
+                <TextBox Text="{Binding Text,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True"/>
+            </Grid>
+        </dxb:BarManager>
+    </Grid>
+</UserControl>
