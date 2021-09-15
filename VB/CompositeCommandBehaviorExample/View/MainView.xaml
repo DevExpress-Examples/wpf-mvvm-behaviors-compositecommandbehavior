@@ -8,10 +8,8 @@
     xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
     xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm" 
     xmlns:vm="clr-namespace:CompositeCommandBehaviorExample.ViewModel" 
-    mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300">
-    <UserControl.DataContext>
-        <vm:MainViewModel/>
-    </UserControl.DataContext>
+    mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300"
+    DataContext="{dxmvvm:ViewModelSource Type=vm:MainViewModel}">
     <dxmvvm:Interaction.Behaviors>
         <dx:DXMessageBoxService />
     </dxmvvm:Interaction.Behaviors>
