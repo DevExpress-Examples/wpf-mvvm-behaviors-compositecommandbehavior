@@ -1,29 +1,24 @@
-﻿using System;
-using System.Linq;
+using System;
 using DevExpress.Mvvm;
-using DevExpress.Mvvm.POCO;
-using System.Collections.Generic;
+using DevExpress.Mvvm.DataAnnotations;
 
 namespace CompositeCommandBehaviorExample.ViewModel {
     public class MainViewModel : ViewModelBase {
-        protected MainViewModel() { }
-        public static MainViewModel Create() {
-            return ViewModelSource.Create(() => new MainViewModel());
-        }
         
         public virtual string Text { get; set; }
         public virtual string SavedText { get; set; }
         bool IsSaved { get { return SavedText == Text; } }
         protected IMessageBoxService MessageService { get { return GetService<IMessageBoxService>(); } }
-
+        [Command]
         public void Save() {
             SavedText = Text;
         }
         public bool CanSave() {
             return !IsSaved;
         }
+        [Command]
         public void Close() {
-            if(!IsSaved && MessageService.ShowMessage("Are you sure to close unsaved document", "Warning", MessageButton.YesNo) == MessageResult.No)
+            if(!IsSaved && MessageService.ShowMessage("Do you want to close the document and lost unsaved changes?", "Warning", MessageButton.YesNo) == MessageResult.No)
                 return;
             Text = String.Empty;
             SavedText = String.Empty;
