@@ -12,8 +12,8 @@ To execute multiple commands, specify the behavior's child [CommandItems](https:
 <!-- default file list -->
 ## Files to look at:
 
-* **[MainView.xaml](./CS/View/MainView.xaml) (VB: [MainView.xaml](./VB/View/MainView.xaml))**
-* [MainViewModel.cs](./CS/ViewModel/MainViewModel.cs) (VB: [MainViewModel.vb](./VB/ViewModel/MainViewModel.vb))
+* **[MainView.xaml](./CS/CompositeCommandBehaviorExample/View/MainView.xaml) (VB: [MainView.xaml](./VB/CompositeCommandBehaviorExample/View/MainView.xaml))**
+* [MainViewModel.cs](./CS/CompositeCommandBehaviorExample/ViewModel/MainViewModel.cs) (VB: [MainViewModel.vb](./VB/CompositeCommandBehaviorExample/ViewModel/MainViewModel.vb))
 <!-- default file list end -->
 
 ## Documentation
