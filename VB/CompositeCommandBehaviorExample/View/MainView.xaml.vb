@@ -1,7 +1,8 @@
-﻿Imports System.Windows.Controls
+Imports System.Windows.Controls
 
 Namespace CompositeCommandBehaviorExample.View
-    Partial Public Class MainView
+
+    Public Partial Class MainView
         Inherits UserControl
 
         Public Sub New()
